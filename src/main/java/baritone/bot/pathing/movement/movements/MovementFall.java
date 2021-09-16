@@ -81,6 +81,7 @@ public class MovementFall extends Movement {
         switch (state.getStatus()) {
             case WAITING:
                 state.setStatus(MovementStatus.RUNNING);
+			break;
             case RUNNING:
                 break;
             default:
