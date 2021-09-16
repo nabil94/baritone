@@ -78,7 +78,15 @@ public class ActionClimb extends ActionPlaceOrBreak {
                     double faceZ = (to.getZ() + against[i].getZ() + 1.0D) * 0.5D;
                     LookManager.lookAtCoords(faceX, faceY, faceZ, true);
                     EnumFacing side = Minecraft.getMinecraft().objectMouseOver.sideHit;
-                    if (Objects.equals(Baritone.whatAreYouLookingAt(), against[i]) && Baritone.whatAreYouLookingAt().offset(side).equals(positionsToPlace[0])) {
+                    /* ********OpenRefactory Warning********
+					 Possible null pointer Dereference!
+					 Path: 
+						File: ActionClimb.java, Line: 81
+							Baritone.whatAreYouLookingAt().offset(side)
+							Method whatAreYouLookingAt may return null and is referenced in method invocation.
+							The expression is enclosed inside an If statement.
+					*/
+					if (Objects.equals(Baritone.whatAreYouLookingAt(), against[i]) && Baritone.whatAreYouLookingAt().offset(side).equals(positionsToPlace[0])) {
                         ticksWithoutPlacement++;
                         MovementManager.sneak = true;
                         if (Minecraft.getMinecraft().player.isSneaking()) {
