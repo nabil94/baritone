@@ -90,7 +90,18 @@ public class BotTaskRegistry {
             throw new IllegalStateException();
         }
         Map<String, ITask<?>> specificMap = itemBased.computeIfAbsent(task.getClass(), x -> new HashMap<>());
-        if (specificMap.containsKey(key)) {
+        /* ********OpenRefactory Warning********
+		 Possible null pointer Dereference!
+		 Path: 
+			File: BotTaskRegistry.java, Line: 92
+				Map<String,ITask<?>> specificMap=itemBased.computeIfAbsent(task.getClass(),x -> new HashMap<>());
+				Variable specificMap is assigned from a library method call which may return null.
+			File: BotTaskRegistry.java, Line: 93
+				specificMap.containsKey(key)
+				specificMap is referenced in method invocation.
+				The expression is enclosed inside an If statement.
+		*/
+		if (specificMap.containsKey(key)) {
             throw new IllegalStateException();
         }
         allOthers.remove(task);
