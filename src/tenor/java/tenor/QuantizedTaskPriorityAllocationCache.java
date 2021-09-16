@@ -67,6 +67,7 @@ public abstract class QuantizedTaskPriorityAllocationCache extends QuantizedTask
                     }
                 }
                 alloc.givePriority(lowestInd, alloc.unallocated());
+			break;
             case SERIAL:
                 // give it all to the first nonzero cost? maybe?
                 for (int i = 1; i < childCosts.length; i++) {
