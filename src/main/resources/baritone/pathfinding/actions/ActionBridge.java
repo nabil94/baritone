@@ -146,7 +146,15 @@ public class ActionBridge extends ActionPlaceOrBreak {
                         if (Baritone.whatAreYouLookingAt().offset(side).equals(positionsToPlace[0])) {
                             MovementManager.rightClickMouse();
                         } else {
-                            Out.gui("Wrong. " + side + " " + Baritone.whatAreYouLookingAt().offset(side) + " " + positionsToPlace[0], Out.Mode.Debug);
+                            
+							/* ********OpenRefactory Warning********
+							 Possible null pointer Dereference!
+							 Path: 
+								File: ActionBridge.java, Line: 149
+									Out.gui("Wrong. " + side + " "+ Baritone.whatAreYouLookingAt().offset(side)+ " "+ positionsToPlace[0],Out.Mode.Debug);
+									Method whatAreYouLookingAt may return null and is referenced in method invocation.
+							*/
+							Out.gui("Wrong. " + side + " " + Baritone.whatAreYouLookingAt().offset(side) + " " + positionsToPlace[0], Out.Mode.Debug);
                         }
                     }
                     Out.log("Trying to look at " + against1 + ", actually looking at" + Baritone.whatAreYouLookingAt());
