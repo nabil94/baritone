@@ -82,7 +82,23 @@ class Path implements IPath {
             tempMovements.addFirst(current.previousMovement);
             current = current.previous;
         }
-        tempPath.addFirst(start.pos);
+        /* ********OpenRefactory Warning********
+		 Possible null pointer Dereference!
+		 Path: 
+			File: AStarPathFinder.java, Line: 118
+				return Optional.of(new Path(startNode,currentNode,numNodes));
+				 Information is passed through the method call via startNode to the formal param start of the method. This later results into a null pointer dereference.
+			File: Path.java, Line: 57
+				PathNode start
+				Variable start is declared as a formal parameter.
+			File: Path.java, Line: 63
+				assemblePath(start,end);
+				 Information is passed through the method call via start to the formal param start of the method. This later results into a null pointer dereference.
+			File: Path.java, Line: 85
+				tempPath.addFirst(start.pos);
+				start is referenced in field access.
+		*/
+		tempPath.addFirst(start.pos);
         // Can't directly convert from the PathNode pseudo linked list to an array because we don't know how long it is
         // inserting into a LinkedList<E> keeps track of length, then when we addall (which calls .toArray) it's able
         // to performantly do that conversion since it knows the length.
