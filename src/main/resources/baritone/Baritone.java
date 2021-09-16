@@ -146,7 +146,7 @@ public class Baritone {
         if (currentPath != null && ManagerTick.tickPath) {
             if (currentPath.tick()) {
                 Goal currentPathGoal = currentPath == null ? null : currentPath.goal;
-                if (currentPath != null && currentPath.failed) {
+                if (currentPath != null && currentPath.getFailed()) {
                     clearPath();
                     Out.gui("Recalculating because path failed", Out.Mode.Standard);
                     nextPath = null;

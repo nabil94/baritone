@@ -149,7 +149,7 @@ public class Path {
      * Did I fail, either by being too far away for too long, or by having an
      * movement take too long
      */
-    public boolean failed = false;
+    private boolean failed = false;
 
     public boolean tick() {
         if (pathPosition >= path.size()) {
@@ -271,4 +271,8 @@ public class Path {
         }
         return tp;
     }
+
+	public boolean getFailed() {
+		return failed;
+	}
 }
