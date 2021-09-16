@@ -161,7 +161,24 @@ public abstract class Action {
         if (isFlowing(pos, state)) {
             return false;//don't walk through flowing liquids
         }
-        if (isLiquid(pos.up())) {
+        /* ********OpenRefactory Warning********
+		 Possible null pointer Dereference!
+		 Path: 
+			File: ChatCommand.java, Line: 291
+				return Baritone.info(Baritone.whatAreYouLookingAt());
+				 Information is passed through the method call via Baritone.whatAreYouLookingAt() to the formal param bp of the method. This later results into a null pointer dereference.
+			File: Baritone.java, Line: 253
+				BlockPos bp
+				Variable pos is declared as a formal parameter.
+			File: Baritone.java, Line: 256
+				return bp + " " + block+ " can walk on: "+ Action.canWalkOn(bp)+ " can walk through: "+ Action.canWalkThrough(bp)+ " is full block: "+ block.isFullBlock(state)+ " is full cube: "+ block.isFullCube(state)+ " is liquid: "+ Action.isLiquid(block)+ " is flow: "+ Action.isFlowing(bp,state);
+				 Information is passed through the method call via bp to the formal param pos of the method. This later results into a null pointer dereference.
+			File: Action.java, Line: 164
+				pos.up()
+				pos is referenced in method invocation.
+				The expression is enclosed inside an If statement.
+		*/
+		if (isLiquid(pos.up())) {
             return false;//you could drown
         }
         return block.isPassable(Minecraft.getMinecraft().world, pos);
