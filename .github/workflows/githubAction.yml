@@ -22,7 +22,7 @@ jobs:
           title: "<icr-begin> testing starts"
           body: |
             ### Agenda
-            The analysis of particular BRANCH: sisbell-issue_199 is here
+            The analysis of particular BRANCH: master is here
                     
             ### Discussion Points
             Add things to discuss below
